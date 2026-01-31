@@ -122,10 +122,11 @@ export default function ReaderPage() {
         onMouseDown={onMouseDown}
         onMouseUp={onMouseUp}
       >
+        {/* RTL: left = next page, right = prev page */}
         <div className="absolute inset-0 flex z-0">
-          <div className="w-1/3 h-full cursor-pointer" onClick={handlePrev} />
+          <div className="w-1/3 h-full cursor-pointer" onClick={handleNext} aria-label="Next page" />
           <div className="w-1/3 h-full cursor-pointer" />
-          <div className="w-1/3 h-full cursor-pointer" onClick={handleNext} />
+          <div className="w-1/3 h-full cursor-pointer" onClick={handlePrev} aria-label="Previous page" />
         </div>
 
         <div className="relative w-full h-full max-w-[600px] flex items-center justify-center">
@@ -156,14 +157,14 @@ export default function ReaderPage() {
         </div>
       </div>
 
-      {/* Bottom bar: prev left, next right, always visible */}
+      {/* Bottom bar: RTL — next (left), prev (right) */}
       <footer className="shrink-0 flex items-center justify-between px-4 h-14 border-t border-neutral-200/80 bg-[var(--surface)] pb-[env(safe-area-inset-bottom)]">
         <button
           type="button"
-          onClick={handlePrev}
-          disabled={currentPage <= 1}
+          onClick={handleNext}
+          disabled={currentPage >= TOTAL_PAGES}
           className="h-10 w-10 flex items-center justify-center rounded-full text-neutral-600 hover:bg-neutral-100 active:scale-95 transition-transform disabled:opacity-40 disabled:pointer-events-none"
-          aria-label="Previous page"
+          aria-label="Next page"
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
@@ -172,10 +173,10 @@ export default function ReaderPage() {
         </span>
         <button
           type="button"
-          onClick={handleNext}
-          disabled={currentPage >= TOTAL_PAGES}
+          onClick={handlePrev}
+          disabled={currentPage <= 1}
           className="h-10 w-10 flex items-center justify-center rounded-full text-neutral-600 hover:bg-neutral-100 active:scale-95 transition-transform disabled:opacity-40 disabled:pointer-events-none"
-          aria-label="Next page"
+          aria-label="Previous page"
         >
           <ChevronRight className="h-6 w-6" />
         </button>
