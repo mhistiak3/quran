@@ -1,3 +1,4 @@
+import { OfflineManager } from "@/components/OfflineManager";
 import { siteConfig } from "@/config";
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -56,6 +57,7 @@ export default function RootLayout({
       style={{ colorScheme: "light" }}
     >
       <body className="antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen">
+        <OfflineManager />
         {children}
       </body>
     </html>

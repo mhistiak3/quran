@@ -159,6 +159,7 @@ export default function ReaderPage() {
               fill
               className="object-contain"
               priority
+              unoptimized
               onLoad={() => setLoading(false)}
               draggable={false}
             />
