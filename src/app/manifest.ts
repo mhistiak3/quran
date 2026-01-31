@@ -1,5 +1,5 @@
-import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config";
+import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -11,6 +11,6 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: siteConfig.backgroundColor,
     theme_color: siteConfig.themeColor,
     lang: siteConfig.lang,
-    icons: siteConfig.icons,
+    icons: siteConfig.icons as MetadataRoute.Manifest["icons"],
   };
 }
