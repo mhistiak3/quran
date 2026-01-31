@@ -1,4 +1,4 @@
-"use strict";
+"use client";
 import { useEffect } from "react";
 
 const TOTAL_PAGES = 604;
