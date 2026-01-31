@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "node scripts/generate-pwa-icons.js; next build",
-    "postinstall": "node scripts/generate-pwa-icons.js || true",
+    "build": "next build",
+    "postinstall": "true",
     "start": "next start",
     "lint": "eslint"
   },
