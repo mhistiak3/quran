@@ -51,9 +51,9 @@ export default function ReaderPage() {
       if (!touchStart.current) return;
       const dx = e.changedTouches[0].clientX - touchStart.current.x;
       if (Math.abs(dx) >= SWIPE_THRESHOLD) {
-        // Swipe right = next page, swipe left = prev page
-        if (dx > 0) handleNext();
-        else handlePrev();
+        // Swipe right = prev page, swipe left = next page (RTL)
+        if (dx > 0) handlePrev();
+        else handleNext();
       }
       touchStart.current = null;
     },
@@ -83,8 +83,8 @@ export default function ReaderPage() {
       const dx = e.clientX - mouseStart.current.x;
       if (Math.abs(dx) >= SWIPE_THRESHOLD) {
         e.preventDefault();
-        if (dx > 0) handleNext();
-        else handlePrev();
+        if (dx > 0) handlePrev();
+        else handleNext();
       }
       mouseStart.current = null;
     },
@@ -99,9 +99,9 @@ export default function ReaderPage() {
     .find((j) => j.startPage <= currentPage);
 
   return (
-    <MobileContainer className="bg-[#f8f6f2] min-h-dvh overflow-hidden flex flex-col">
+    <MobileContainer className="bg-[#f8f6f2] h-dvh overflow-hidden flex flex-col">
       {/* Top bar: back only, under phone screen, always visible */}
-      <header className="shrink-0 flex items-center px-4 h-12 border-b border-neutral-200/80 bg-[var(--surface)]">
+      <header className="shrink-0 z-10 flex items-center px-4 h-12 border-b border-neutral-200/80 bg-[var(--surface)]">
         <Link
           href="/"
           className="h-9 w-9 flex items-center justify-center rounded-full text-neutral-600 hover:bg-neutral-100 active:scale-95 transition-transform"
@@ -125,9 +125,17 @@ export default function ReaderPage() {
       >
         {/* RTL: left = next page, right = prev page */}
         <div className="absolute inset-0 flex z-0">
-          <div className="w-1/3 h-full cursor-pointer" onClick={handleNext} aria-label="Next page" />
+          <div
+            className="w-1/3 h-full cursor-pointer"
+            onClick={handleNext}
+            aria-label="Next page"
+          />
           <div className="w-1/3 h-full cursor-pointer" />
-          <div className="w-1/3 h-full cursor-pointer" onClick={handlePrev} aria-label="Previous page" />
+          <div
+            className="w-1/3 h-full cursor-pointer"
+            onClick={handlePrev}
+            aria-label="Previous page"
+          />
         </div>
 
         <div className="relative w-full h-full max-w-[600px] flex items-center justify-center">
@@ -159,7 +167,7 @@ export default function ReaderPage() {
       </div>
 
       {/* Bottom bar: RTL — next (left), prev (right) */}
-      <footer className="shrink-0 flex items-center justify-between px-4 h-14 border-t border-neutral-200/80 bg-[var(--surface)] pb-[env(safe-area-inset-bottom)]">
+      <footer className="shrink-0 z-10 flex items-center justify-between px-4 h-14 border-t border-neutral-200/80 bg-[var(--surface)] pb-[env(safe-area-inset-bottom)]">
         <button
           type="button"
           onClick={handleNext}
