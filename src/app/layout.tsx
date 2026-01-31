@@ -1,6 +1,6 @@
+import { siteConfig } from "@/config";
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { siteConfig } from "@/config";
 import "./globals.css";
 
 const fontApp = Plus_Jakarta_Sans({
@@ -50,7 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={fontApp.variable} style={{ colorScheme: "light" }}>
+    <html
+      lang="en"
+      className={fontApp.variable}
+      style={{ colorScheme: "light" }}
+    >
       <body className="antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen">
         {children}
       </body>
