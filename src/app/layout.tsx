@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { siteConfig } from "@/config";
 import "./globals.css";
 
 const fontApp = Plus_Jakarta_Sans({
@@ -8,23 +9,39 @@ const fontApp = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
+const ogImage = siteConfig.ogImage ?? siteConfig.logo;
+
 export const metadata: Metadata = {
-  title: "Al Quran Hafezi",
-  description: "Read Hafezi Quran 15 lines",
-  manifest: "/manifest.json",
+  title: siteConfig.name,
+  description: siteConfig.description,
+  manifest: "/manifest.webmanifest",
+  applicationName: siteConfig.shortName,
+  ...(siteConfig.keywords?.length && { keywords: siteConfig.keywords }),
+  ...(siteConfig.author && { authors: [{ name: siteConfig.author }] }),
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Al Quran",
+    title: siteConfig.appleWebAppTitle,
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    type: "website",
+    ...(ogImage && { images: [{ url: ogImage, alt: siteConfig.name }] }),
+  },
+  twitter: {
+    card: "summary",
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#15803d", // quran-green-700
+  themeColor: siteConfig.themeColor,
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false, // Prevent zoom for app-like feel
+  userScalable: false,
 };
 
 export default function RootLayout({

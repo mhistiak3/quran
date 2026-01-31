@@ -4,6 +4,7 @@ import { JuzzList } from "@/components/JuzzList";
 import { MobileContainer } from "@/components/MobileContainer";
 import { Navigation } from "@/components/Navigation";
 import { SurahList } from "@/components/SurahList";
+import { siteConfig } from "@/config";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -24,7 +25,7 @@ function HomeContent() {
       <header className="shrink-0 pt-6 pb-4 px-5 bg-[var(--surface)] z-10">
         <div className="flex items-baseline justify-between mb-6">
           <h1 className="text-2xl font-bold tracking-tight text-[var(--foreground)]">
-            Quran
+            {siteConfig.shortName}
           </h1>
           <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
             114 Surahs

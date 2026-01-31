@@ -1,0 +1,29 @@
+{
+  "name": "Al Quran Hafezi",
+  "shortName": "Quran",
+  "description": "Read Hafezi Quran — 15 lines per page. Browse by Surah or Juzz, works offline.",
+  "themeColor": "#15803d",
+  "backgroundColor": "#ffffff",
+  "logo": "/icon-512x512.png",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "startUrl": "/",
+  "display": "standalone",
+  "lang": "en",
+  "appleWebAppTitle": "Al Quran",
+  "keywords": ["Quran", "Hafezi", "Islamic", "offline"],
+  "author": "",
+  "ogImage": "/icon-512x512.png"
+}

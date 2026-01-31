@@ -51,8 +51,9 @@ export default function ReaderPage() {
       if (!touchStart.current) return;
       const dx = e.changedTouches[0].clientX - touchStart.current.x;
       if (Math.abs(dx) >= SWIPE_THRESHOLD) {
-        if (dx > 0) handlePrev();
-        else handleNext();
+        // Swipe right = next page, swipe left = prev page
+        if (dx > 0) handleNext();
+        else handlePrev();
       }
       touchStart.current = null;
     },
@@ -82,8 +83,8 @@ export default function ReaderPage() {
       const dx = e.clientX - mouseStart.current.x;
       if (Math.abs(dx) >= SWIPE_THRESHOLD) {
         e.preventDefault();
-        if (dx > 0) handlePrev();
-        else handleNext();
+        if (dx > 0) handleNext();
+        else handlePrev();
       }
       mouseStart.current = null;
     },

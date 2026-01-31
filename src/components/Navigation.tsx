@@ -22,8 +22,8 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-50 bg-[var(--surface)]/95 backdrop-blur-xl border-t border-neutral-200/80 pb-[env(safe-area-inset-bottom)] pt-1.5">
-      <div className="flex justify-around items-center h-11 px-4">
+    <nav className="fixed bottom-0 left-0 right-0 z-[100] bg-[var(--surface)] border-t border-neutral-200">
+      <div className="flex justify-around items-center h-12 px-4 mx-auto max-w-[430px] pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {navItems.map((item) => {
           const active = isActive(item);
           return (
@@ -38,7 +38,7 @@ export const Navigation = () => {
               <item.icon
                 className={cn("h-5 w-5 shrink-0", active && "stroke-[2.5]")}
               />
-              <span className="text-[9px] font-medium">{item.label}</span>
+              <span className="text-[10px] font-medium">{item.label}</span>
             </Link>
           );
         })}
